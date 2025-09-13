@@ -9,4 +9,10 @@
     $ git pull origin main: 원격 저장소에서 커밋 내려받기(원격 저장소에서 직접 커밋 시)
 
 ##4-5. 깃허브에 SSH 원격 접속하기
-    $ ssh-keygen -t ed25519 -C "2496001@ewha.ac.kr": 
+    $ ssh-keygen -t ed25519 -C "2496001@ewha.ac.kr": -t ed25519: ed25519라는 알고리즘을 사용해 SSH 키를 만듦. -C: “이메일”: 키에 이메일 주소를 주석으로 기록
+    $ eval "$(ssh-agent -s)": SSH 에이전트(SSH 키를 안전하게 저장하고 관리하는 프로그램) 실행
+    $ ssh-add ~/.ssh/id_ed25519: 사용자 시스템에서 SSH 에이전트를 실행하고 프라이빗 키 등록
+
+    $ clip < ~/.ssh/id_ed25519.pub → clip 명령은 < 기호 다음에 있는 파일의 내용을 클립보드로 복사함
+
+    $ git remote add origin git@github.com:2496001-web/ECC-50FW---2496001---SSH.git: SSH 주소로 원격 저장소 연결

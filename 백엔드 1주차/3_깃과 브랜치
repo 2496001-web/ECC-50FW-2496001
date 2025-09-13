@@ -14,3 +14,5 @@
     $ git merge o2: o2라는 이름을 가진 브랜치와 현재 브랜치를 병합
     $ git branch -d o2: 병합이 끝났다면 o2 브랜치 삭제
     $ touch m1: m1이라는 파일을 만듦
+
+    $ git cherry-pick 복사한 커밋 해시: 복사한 해시의 커밋을 병합
