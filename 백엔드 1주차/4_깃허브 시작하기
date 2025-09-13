@@ -1,0 +1,12 @@
+##4-3. 지역 저장소를 원격 저장소에 연결하기
+    $ git remote add origin 연결할 원격 저장소 HTTPS 주소: 내 지역 Git 저장소와 GitHub 원격 저장소 연결
+    $ git remote -v: 잘 연결되었는지 확인
+
+##4-4. 지역 저장소와 원격 저장소 동기화하기
+    $ git push -u origin main: 지역 저장소의 브랜치를 origin(원격 저장소)의 main 브랜치로 푸시하라는 명령. -u 옵션은 지역 저장소의 브랜치를 원격 저장소의 브랜치에 연결하는 것으로 처음에 한 번만 사용하면 됨
+    $ git push: 사용자 인증 했으면 이거만 하면 됨
+
+    $ git pull origin main: 원격 저장소에서 커밋 내려받기(원격 저장소에서 직접 커밋 시)
+
+##4-5. 깃허브에 SSH 원격 접속하기
+    $ ssh-keygen -t ed25519 -C "2496001@ewha.ac.kr": 
