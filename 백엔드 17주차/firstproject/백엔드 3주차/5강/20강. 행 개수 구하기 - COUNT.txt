@@ -1,0 +1,99 @@
+##20강. 행 개수 구하기 - COUNT##
+
+#예제 5-1. sample51의 행 개수 구하기
+mysql> SELECT * FROM sample51;
++------+------+----------+
+| no   | name | quantity |
++------+------+----------+
+|    1 | A    |        1 |
+|    2 | A    |        2 |
+|    3 | B    |       10 |
+|    4 | C    |        3 |
+|    5 | NULL |     NULL |
++------+------+----------+
+5 rows in set (0.360 sec)
+
+mysql> SELECT COUNT(*) FROM sample51;
++----------+
+| COUNT(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.065 sec)
+
+#예제 5-2. sample51의 행 개수를 WHERE 구를 지정하여 구하기
+mysql> SELECT * FROM sample51 WHERE name = 'A';
++------+------+----------+
+| no   | name | quantity |
++------+------+----------+
+|    1 | A    |        1 |
+|    2 | A    |        2 |
++------+------+----------+
+2 rows in set (0.014 sec)
+
+mysql> SELECT COUNT(*) FROM sample51 WHERE name = 'A';
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.013 sec)
+
+#예제 5-3. 행 개수를 구할 때 NULL 값 다루기
+mysql> SELECT COUNT(no), COUNT(name) FROM sample51;
++-----------+-------------+
+| COUNT(no) | COUNT(name) |
++-----------+-------------+
+|         5 |           4 |
++-----------+-------------+
+1 row in set (0.011 sec)
+#NULL은 무시된다
+
+#예제 5-4. sample51 테이블
+#예제 5-5. DISTINCT로 중복 제거하기
+mysql> SELECT * FROM sample51;
++------+------+----------+
+| no   | name | quantity |
++------+------+----------+
+|    1 | A    |        1 |
+|    2 | A    |        2 |
+|    3 | B    |       10 |
+|    4 | C    |        3 |
+|    5 | NULL |     NULL |
++------+------+----------+
+5 rows in set (0.013 sec)
+
+mysql> SELECT ALL name FROM sample51;
++------+
+| name |
++------+
+| A    |
+| A    |
+| B    |
+| C    |
+| NULL |
++------+
+5 rows in set (0.008 sec)
+
+#DISTINCT를 지정, 콤마는 붙이지 않는다
+mysql> SELECT DISTINCT name FROM sample51;
++------+
+| name |
++------+
+| A    |
+| B    |
+| C    |
+| NULL |
++------+
+4 rows in set (0.106 sec)
+
+#예제 5-6. 중복을 제거한 뒤 개수 구하기
+mysql> SELECT COUNT(ALL name), COUNT(DISTINCT name) FROM sample51;
++-----------------+----------------------+
+| COUNT(ALL name) | COUNT(DISTINCT name) |
++-----------------+----------------------+
+|               4 |                    3 |
++-----------------+----------------------+
+1 row in set (0.108 sec)
+#NULL을 제외한 값의 개수 출력 (COUNT(ALL column))
+

@@ -1,0 +1,18 @@
+##5-1. 서로 다른 컴퓨터에서 원격 저장소 함꼐 사용하기
+    $ git clone https://github.com/2496001-web/ECC-50FW-2496001.git . 
+    -> 원격 저장소에 연결되면서 저장소에 있던 내용이 지역 저장소로 복제됨
+
+##5-2. 원격 브랜치 정보 가져오기
+    $ git fetch
+    -> 원격 저장소의 최신 커밋/브랜치 정보를 지역 저장소로 ‘가져오기만’ 함
+
+    $ git diff HEAD origin/main
+    -> 현재 커밋과 원격 저장소(origin)의 main 브랜치 최신 커밋 비교
+
+    $ git merge origin/main
+    -> 반드시 fetch 했으면 merge 해야 함. 그래야 합쳐짐!
+
+##5-4. 원격 저장소에서 협업하기
+    $ git push -u origin 브랜치명
+    -> 원격 저장소에 없는 브랜치로 푸시하려면
+    

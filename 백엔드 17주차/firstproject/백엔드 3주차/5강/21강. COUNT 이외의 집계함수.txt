@@ -1,0 +1,51 @@
+##21강. COUNT 이외의 집계함수##
+
+#예제 5-7. SUM으로 합계 구하기
+mysql> SELECT * FROM sample51;
++------+------+----------+
+| no   | name | quantity |
++------+------+----------+
+|    1 | A    |        1 |
+|    2 | A    |        2 |
+|    3 | B    |       10 |
+|    4 | C    |        3 |
+|    5 | NULL |     NULL |
++------+------+----------+
+5 rows in set (0.012 sec)
+
+mysql> SELECT SUM(quantity) FROM sample51;
++---------------+
+| SUM(quantity) |
++---------------+
+|            16 |
++---------------+
+1 row in set (0.012 sec)
+
+#예제 5-8. AVG로 평균값 구하기
+mysql> SELECT AVG(quantity), SUM(quantity)/COUNT(quantity) FROM sample51;
++---------------+-------------------------------+
+| AVG(quantity) | SUM(quantity)/COUNT(quantity) |
++---------------+-------------------------------+
+|        4.0000 |                        4.0000 |
++---------------+-------------------------------+
+1 row in set (0.012 sec)
+
+#예제 5-9. AVG로 평균값 계산(NULL을 0으로 변환)
+mysql> SELECT AVG(CASE WHEN quantity IS NULL THEN 0 ELSE quantity END) AS avgnull0 FROM sample51;
++----------+
+| avgnull0 |
++----------+
+|   3.2000 |
++----------+
+1 row in set (0.009 sec)
+
+#예제 5-10, MIN, MAX로 최솟값, 최댓값 구하기
+mysql> SELECT MIN(quantity), MAX(quantity), MIN(name), MAX(name) FROM sample51;
++---------------+---------------+-----------+-----------+
+| MIN(quantity) | MAX(quantity) | MIN(name) | MAX(name) |
++---------------+---------------+-----------+-----------+
+|             1 |            10 | A         | C         |
++---------------+---------------+-----------+-----------+
+1 row in set (0.135 sec)
+#문자열형과 날짜형에도 적용 가능
+
